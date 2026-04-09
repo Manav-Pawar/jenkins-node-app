@@ -30,3 +30,11 @@ describe('Multiply Endpoint', () => {
         expect(res.body.result).toBe(12);
     });
 });
+
+describe('Subtract Endpoint', () => {
+    test('GET /subtract/10/3 should return 7', async () => {
+        const res = await request(app).get('/subtract/10/3');
+        expect(res.statusCode).toBe(200);
+        expect(res.body.result).toBe(7);
+    });
+});

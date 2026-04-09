@@ -21,6 +21,13 @@ app.get('/multiply/:a/:b', (req, res) => {
     res.json({ result: a * b });
 });
 
+// Subtract two numbers
+app.get('/subtract/:a/:b', (req, res) => {
+    const a = parseInt(req.params.a);
+    const b = parseInt(req.params.b);
+    res.json({ result: a - b });
+});
+
 // Only start the server if this file is run directly (not during tests)
 if (require.main === module) {
     app.listen(PORT, () => {
