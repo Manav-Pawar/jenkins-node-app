@@ -29,9 +29,24 @@ pipeline{
               agent{
                 docker { image 'node:18-alpine' }
             }
-            steps{
+            parallel{
+            stage('Run Tests'){
+                steps{
                 sh 'npm test'
                 }
+            }
+            stage('Security Audit'){
+            steps{
+                sh 'npm audit|| true'
+                }
+            }
+            stage('Version Info'){
+            steps{
+                sh 'node --version'
+                sh 'npm --version'
+                }
+            }
+            }
         }
         stage('Build Docker Image stage 4'){
             agent any
